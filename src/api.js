@@ -3,6 +3,7 @@ require("dotenv/config");
 const axios = require('axios');
 
 const instance = axios.create({
+    baseURL: process.env.REQUEST_URL,
     timeout: 1000,
     headers: {
         Authorization: `token ${process.env.OAUTH_TOKEN}`
@@ -11,6 +12,6 @@ const instance = axios.create({
 
 module.exports = {
     repos() {
-        return instance.get(process.env.REQUEST_URL);
+        return instance.get();
     }
 }

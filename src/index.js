@@ -1,9 +1,14 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 
 const router = require("./router.js");
 
 app.use(express.json());
+app.use(cors());
+
 app.use(router);
 
-app.listen(3333, () => console.log("Listening on 3333"));
+const PORT = process.env.PORT || 3333;
+
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
